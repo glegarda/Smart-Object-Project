@@ -1,4 +1,4 @@
-# Describtion
+# Description
 This application contains drivers and a control software for the device called Smart-Object.
 Tcp-connection -> Ip address and port number: `192.168.4.1 3500`.
 The configuration string has always a length of 8 chars.
