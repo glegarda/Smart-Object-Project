@@ -29,6 +29,13 @@ int8_t current_mission = 0;
 
 #define BLINK_GPIO 12
 
+static void smart_object_init() {
+	ESP_ERROR_CHECK(i2c_master_init());
+	LP5024_init();
+	ADXL345_init();
+	TCS34725_init();
+}
+
 static void respond(const int sock){
         char rgb_string[50];
 		int written = tcp_respond(sock, rgb_string, sizeof(rgb_string));
@@ -121,9 +128,9 @@ static void test(int config) {
     memset(str_config, '0', 50);
     sprintf(str_config, "%d", config);
     
-    char pow[4];
-    memset(pow, '\0', 4);
-    for (int k=0; k<4; k++){
+    char pow[3];
+    memset(pow, '\0', 3);
+    for (int k=0; k<3; k++){
         int offset = 2 + k;
         if (str_config[offset] != '\0'){
             pow[k] = str_config[offset];
