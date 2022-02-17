@@ -18,7 +18,7 @@ message_type = '4' # clear mission
 message = '11255' # red, fully lit
 
 # Process command line arguments
-if len(sys.argv > 0):
+if len(sys.argv) > 1:
 	message = sys.argv[1]
 
 # Create a TCP/IP socket
