@@ -180,22 +180,22 @@ static void tcp_server_task(void *pvParameters){
 		printf("socket %d \n", sock);
         int num = get_action(sock);
         printf("ACTION %d \n", num);
-        switch (num){
+        switch (num){ //values {1-5}
             case START:
                 printf("SMART OBJECT INIT \n");
                 smart_object_init();
                 break;
             case STOP:
                 break;
-            case TEST: ;
-                int config = get_config(sock);
-                test(config);
-                printf("TEST: DISPLAY COLOR %d \n", config);
-                break;
             case RESTART:
                 printf("RESTARTING THE DEVICE! \n");
                 fflush(stdout);
                 esp_restart();
+                break;
+            case TEST: ;
+                int config = get_config(sock);
+                test(config);
+                printf("TEST: DISPLAY COLOR %d \n", config);
                 break;
             case GLOBAL_CONFIG: ;
                 int global_config = get_config(sock);
